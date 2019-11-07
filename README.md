@@ -4,7 +4,7 @@ Primeiramente, parabéns por atingir nossos requisitos iniciais.
 
 Nosso teste é simplesmente um **CRUD**, com pesquisa, listagem, criação, edição e remoção dos mesmos.
 
-A documentação da api está disponível [neste endereço](https://tradersclubapi.docs.apiary.io/). Em caso de qualquer problema, por favor, avise-nos de imediato através do e-mail da **Javier Ramacciotti** - **ramacciotti@tradersclub.com.br**.
+A documentação da api está disponível [neste endereço](https://tradersclub.docs.apiary.io/). Em caso de qualquer problema, por favor, avise-nos de imediato através do e-mail da **Javier Ramacciotti** - **ramacciotti@tradersclub.com.br**.
 
 As 4 telas de referência para o layout encontram-se na pasta *layout*, e consistem:
 
