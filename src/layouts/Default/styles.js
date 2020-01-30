@@ -97,7 +97,8 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   height: ${DEFAULT_SIDEBAR_ELEMENTS_SIZE};
-  border-radius: 3px;
+  border-radius: 5px;
+  padding: 0 5px;
   width: 100%;
   background-color: transparent;
   border: white solid 2px;
