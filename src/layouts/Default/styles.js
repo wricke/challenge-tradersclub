@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 import colors from '../../styles/colors';
-import { minWidth, maxWidth } from '../../styles/devices';
+import { minWidth } from '../../styles/devices';
 
-import tcLogo from '../../assets/logo-tc.png';
 import car from '../../assets/car-wireframe.png';
 import sizes from '../../styles/sizes';
-
-const SIDEBAR_WIDTH = '252px';
+import { SIDEBAR_WIDTH } from '../../components/layouts/Sidebar/styles';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,28 +13,6 @@ export const Wrapper = styled.div`
   width: 100%;
   background: ${colors.wrapper};
   position: relative;
-`;
-
-export const Sidebar = styled.aside`
-  height: 100%;
-  background: ${colors.sidebar};
-  min-width: ${SIDEBAR_WIDTH};
-  display: flex;
-  justify-content: center;
-
-  > h1 {
-    margin-top: 37px;
-    display: inline-block;
-    background: url(${tcLogo}) no-repeat;
-    background-size: 70px;
-    width: 70px;
-    height: 70px;
-    color: transparent;
-  }
-
-  @media ${maxWidth.laptop.replace(/\d+/, sizes.laptop - 1)} {
-    ${(props) => `${!props.show ? 'display: none;' : null}`}
-  }
 `;
 
 export const PageContainer = styled.div`

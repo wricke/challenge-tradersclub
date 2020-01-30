@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Wrapper,
-  Sidebar,
   PageContainer,
   Container,
 } from './styles';
 import { greaterThan } from '../../helpers/sizes';
 import Header from '../../components/layouts/Header';
 import { Types } from '../../store/ducks/sidebar';
+import Sidebar from '../../components/layouts/Sidebar';
 
 const Default = ({ Page, ...props }) => {
   const { laptop: gtLaptop } = greaterThan;
@@ -33,9 +33,7 @@ const Default = ({ Page, ...props }) => {
 
   return (
     <Wrapper>
-      <Sidebar show={showSidebar}>
-        <h1> TradersClub </h1>
-      </Sidebar>
+      <Sidebar show={showSidebar} />
       <Container>
         <Header />
         <PageContainer>
