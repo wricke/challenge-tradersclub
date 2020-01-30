@@ -1,43 +1,35 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Menu, Close, Search } from '@material-ui/icons';
-import { Formik } from 'formik';
 
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Wrapper,
   Sidebar,
-  Header,
-  Button,
-  ButtonContainer,
   PageContainer,
   Container,
-  Input,
-  InputContainer,
-  ButtonInputContainer,
 } from './styles';
 import { greaterThan } from '../../helpers/sizes';
-import colors from '../../styles/colors';
+import Header from '../../components/layouts/Header';
+import { Types } from '../../store/ducks/sidebar';
 
 const Default = ({ Page, ...props }) => {
   const { laptop: gtLaptop } = greaterThan;
   const [isGreaterThanLaptop, setIsGreaterThanLaptop] = useState(gtLaptop());
-  const [showSidebar, setShowSidebar] = useState(isGreaterThanLaptop);
-  const formik = {
-    initialValues: {
-      search: '',
-    },
-    onSubmit: console.log,
-  };
+  const showSidebar = useSelector((state) => state.sidebar.showing);
+  const dispatcher = useDispatch();
 
   useCallback(() => {
+    const setShowing = (s) => {
+      dispatcher({ type: Types.SET_SHOWING, showing: s });
+    };
     const validateSidebarWidth = () => {
       setIsGreaterThanLaptop(gtLaptop());
-      setShowSidebar(isGreaterThanLaptop);
+      setShowing(isGreaterThanLaptop);
     };
     window.addEventListener('resize', validateSidebarWidth);
 
     return () => window.removeEventListener('resize', validateSidebarWidth);
-  }, [gtLaptop, isGreaterThanLaptop]);
+  }, [dispatcher, gtLaptop, isGreaterThanLaptop]);
 
   return (
     <Wrapper>
@@ -45,42 +37,7 @@ const Default = ({ Page, ...props }) => {
         <h1> TradersClub </h1>
       </Sidebar>
       <Container>
-        <Header>
-          <ButtonContainer hideOnLaptop={isGreaterThanLaptop}>
-            <Button onClick={() => setShowSidebar(!showSidebar)}>
-              {
-                !showSidebar ? <Menu /> : <Close />
-              }
-            </Button>
-          </ButtonContainer>
-          <Formik
-            onSubmit={formik.onSubmit}
-            initialValues={formik.initialValues}
-          >
-            {(formProps) => (
-              <InputContainer
-                hideOnMobile={showSidebar}
-                onSubmit={formProps.handleSubmit}
-              >
-                <Input
-                  name="search"
-                  type="text"
-                  onChange={formProps.handleChange}
-                  onBlur={formProps.handleBlur}
-                  value={formProps.values.search}
-                />
-                <ButtonInputContainer type="submit">
-                  <Search />
-                </ButtonInputContainer>
-              </InputContainer>
-            )}
-          </Formik>
-          <ButtonContainer hideOnMobile={showSidebar}>
-            <Button bold bgColor="white" width="auto" color={colors.header}>
-              CADASTRAR
-            </Button>
-          </ButtonContainer>
-        </Header>
+        <Header />
         <PageContainer>
           <Page {...props} />
         </PageContainer>
