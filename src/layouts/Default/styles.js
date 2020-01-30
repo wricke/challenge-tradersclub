@@ -70,7 +70,11 @@ export const PageContainer = styled.div`
   background: linear-gradient(${colors.header.concat('E6')}, ${colors.header.concat('E6')}),
     url(${car}) no-repeat center;
   background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  @media ${minWidth.laptop} {
     background-size: 100%;
+  }
 `;
 
 export const Container = styled.div`
