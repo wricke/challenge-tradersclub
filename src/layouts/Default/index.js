@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Close } from '@material-ui/icons';
 
 import {
   Wrapper, Sidebar, Header, Button, ButtonContainer, PageContainer, Container,
 } from './styles';
+import { greaterThan } from '../../helpers/sizes';
 
 const Default = ({ Page, ...props }) => {
-  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 768);
-  const validateSidebarWidth = () => {
-    setShowSidebar(window.innerWidth > 768);
-  };
+  const { laptop: gtLaptop } = greaterThan;
+  const [showSidebar, setShowSidebar] = useState(gtLaptop());
 
-  useEffect(() => {
+  useCallback(() => {
+    const validateSidebarWidth = () => setShowSidebar(gtLaptop());
     window.addEventListener('resize', validateSidebarWidth);
 
     return () => window.removeEventListener('resize', validateSidebarWidth);
-  }, []);
+  }, [gtLaptop]);
 
   return (
     <Wrapper>
