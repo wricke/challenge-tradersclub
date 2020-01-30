@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Close, Search } from '@material-ui/icons';
+import { Formik } from 'formik';
 
 import {
   Wrapper,
@@ -21,6 +22,12 @@ const Default = ({ Page, ...props }) => {
   const { laptop: gtLaptop } = greaterThan;
   const [isGreaterThanLaptop, setIsGreaterThanLaptop] = useState(gtLaptop());
   const [showSidebar, setShowSidebar] = useState(isGreaterThanLaptop);
+  const formik = {
+    initialValues: {
+      search: '',
+    },
+    onSubmit: console.log,
+  };
 
   useCallback(() => {
     const validateSidebarWidth = () => {
@@ -46,12 +53,28 @@ const Default = ({ Page, ...props }) => {
               }
             </Button>
           </ButtonContainer>
-          <InputContainer hideOnMobile={showSidebar}>
-            <Input />
-            <ButtonInputContainer>
-              <Search />
-            </ButtonInputContainer>
-          </InputContainer>
+          <Formik
+            onSubmit={formik.onSubmit}
+            initialValues={formik.initialValues}
+          >
+            {(formProps) => (
+              <InputContainer
+                hideOnMobile={showSidebar}
+                onSubmit={formProps.handleSubmit}
+              >
+                <Input
+                  name="search"
+                  type="text"
+                  onChange={formProps.handleChange}
+                  onBlur={formProps.handleBlur}
+                  value={formProps.values.search}
+                />
+                <ButtonInputContainer type="submit">
+                  <Search />
+                </ButtonInputContainer>
+              </InputContainer>
+            )}
+          </Formik>
           <ButtonContainer hideOnMobile={showSidebar}>
             <Button bold bgColor="white" width="auto" color={colors.header}>
               CADASTRAR
