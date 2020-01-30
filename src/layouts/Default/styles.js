@@ -35,7 +35,7 @@ export const Sidebar = styled.aside`
     color: transparent;
   }
 
-  @media ${maxWidth.tablet.replace(/\d+/, sizes.tablet - 1)} {
+  @media ${maxWidth.laptop.replace(/\d+/, sizes.laptop - 1)} {
     ${(props) => `${!props.show ? 'display: none;' : null}`}
   }
 `;
@@ -59,7 +59,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
 
-  @media ${minWidth.tablet} {
+  @media ${minWidth.laptop} {
     display: none;
   }
 `;
@@ -70,14 +70,14 @@ export const PageContainer = styled.div`
   background: linear-gradient(${colors.header.concat('E6')}, ${colors.header.concat('E6')}),
     url(${car}) no-repeat center;
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
+    background-size: 100%;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  @media ${minWidth.tablet.replace(/\d+/, sizes.tablet + 1)} {
+  width: 100%;
+  @media ${minWidth.laptop.replace(/\d+/, sizes.laptop + 1)} {
     width: calc(100% - ${SIDEBAR_WIDTH});
   }
 `;
