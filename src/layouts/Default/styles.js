@@ -15,7 +15,16 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const PageContainer = styled.div`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media ${minWidth.laptop.replace(/\d+/, sizes.laptop + 1)} {
+    width: calc(100% - ${SIDEBAR_WIDTH});
+  }
+`;
+
+export const PageContainer = styled.main`
   width: 100%;
   flex-grow: 1;
   background: linear-gradient(${colors.wrapper.concat('F2')}, ${colors.wrapper.concat('F2')}),
@@ -25,15 +34,6 @@ export const PageContainer = styled.div`
   background-position: center;
   @media ${minWidth.laptop} {
     background-size: 100%;
-  }
-`;
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  @media ${minWidth.laptop.replace(/\d+/, sizes.laptop + 1)} {
-    width: calc(100% - ${SIDEBAR_WIDTH});
   }
 `;
 
