@@ -1,13 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { minWidth } from '../../styles/devices';
 
 const PADDING_SIZE = '30px';
+export const ITEM_WIDTH = css`
+  width: calc(100% - ${PADDING_SIZE});
+
+  @media ${minWidth.mobileXL} {
+    width: 80%;
+  }
+
+  @media ${minWidth.tablet} {
+    width: 100%;
+  }
+`;
 
 export const Wrapper = styled.li`
   min-height: calc(120px - ${PADDING_SIZE});
   padding: ${PADDING_SIZE};
-  width: calc(100% - ${PADDING_SIZE});
   display: flex;
   justify-content: space-between;
   :hover {
@@ -28,14 +38,8 @@ export const Wrapper = styled.li`
       }
     }
   }
-
-  @media ${minWidth.mobileXL} {
-    width: 80%;
-  }
-
-  @media ${minWidth.tablet} {
-    width: 100%;
-  }
+  
+  ${ITEM_WIDTH}
 `;
 
 export const OrdenedList = styled.ul`
