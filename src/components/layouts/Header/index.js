@@ -74,7 +74,7 @@ const Header = () => {
       </Formik>
       <ButtonContainer hideOnMobile={showingSidebar}>
         <Button bold bgColor="white" width="auto" color={colors.header}>
-      CADASTRAR
+          Cadastrar
         </Button>
       </ButtonContainer>
     </Wrapper>
