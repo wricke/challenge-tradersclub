@@ -51,7 +51,16 @@ export const Input = styled.input`
   padding: 0 5px;
   width: 100%;
   background-color: transparent;
-  border: white solid 2px;
+  border: ${colors.input} solid 2px;
+  ::placeholder {
+    color: ${colors.input}; 
+  }
+  :-ms-input-placeholder {
+    color: ${colors.input}; 
+  }
+  ::-ms-input-placeholder {
+    color: ${colors.input}; 
+  }
 `;
 
 export const InputContainer = styled.form`
@@ -67,6 +76,10 @@ export const ButtonInputContainer = styled(Button)`
   position: absolute;
   right: 0;
   background-color: white;
+  border-radius: 5px;
+  border-color: ${colors.input} ${colors.input} ${colors.input};
+  border-style: solid;
+  border-width: 2px 2px 2px 0;
   color: ${colors.header};
   > svg {
     fill: ${colors.header};
