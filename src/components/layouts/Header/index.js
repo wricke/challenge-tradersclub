@@ -59,6 +59,7 @@ const Header = () => {
             onSubmit={formProps.handleSubmit}
           >
             <Input
+              placeholder="Pesquise por um veículo"
               name="search"
               type="text"
               onChange={formProps.handleChange}
