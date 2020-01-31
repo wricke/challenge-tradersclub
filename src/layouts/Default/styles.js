@@ -28,7 +28,7 @@ export const PageContainer = styled.main`
   width: 100%;
   flex-grow: 1;
   background: linear-gradient(${colors.wrapper.concat('F2')}, ${colors.wrapper.concat('F2')}),
-    url(${car}) no-repeat center;
+    url(${car}), #ffffff no-repeat center;
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;
