@@ -37,3 +37,12 @@ export const toOurCar = (car) => {
 export const allCarsToOurCars = (cars) => cars.map(toOurCar);
 
 export const fromApi = (data) => data.cars;
+
+export const toCurrency = (number = 0, code = 'BLR') => {
+  const { format } = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: code,
+  });
+
+  return format(number).replace(/BLR/, 'R$');
+};
