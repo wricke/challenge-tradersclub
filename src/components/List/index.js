@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '../../layouts/Default/styles';
 import Item, { ItemPropTypes } from '../Item';
 
-import { Separator } from './style';
+import { Separator, Container } from './style';
 
 const List = (props) => {
   const { cars } = props;
