@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.ul`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const Separator = styled.hr`
   width: 100%;
   height: 0px;
-  border: #ffffff1a solid 0.4px;
-`;
+  border: #ffffff1a solid 1px;
 
-export const Container = styled.div`
-  width: 100%;
   &:last-child {
-    hr {
-      display: none;
-    }
+    display: none;
   }
 `;

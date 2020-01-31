@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import { getCars } from '../../services/axios';
 import { fromApi, allCarsToOurCars } from '../../helpers/mappers';
-import { Wrapper } from './styles';
 import List from '../../components/List';
 
 const ListPage = () => {
@@ -17,11 +16,7 @@ const ListPage = () => {
       .then(setCars);
   }, [search]);
 
-  return (
-    <Wrapper>
-      <List cars={cars} />
-    </Wrapper>
-  );
+  return <List cars={cars} />;
 };
 
 export default ListPage;
