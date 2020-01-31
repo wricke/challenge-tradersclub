@@ -13,23 +13,26 @@ import {
 } from './styles';
 import colors from '../../../styles/colors';
 import { greaterThan } from '../../../helpers/sizes';
-import { Types } from '../../../store/ducks/sidebar';
+import { Types as SidebarTypes } from '../../../store/ducks/sidebar';
+import { Types as HeaderTypes } from '../../../store/ducks/header';
 
 const Header = () => {
   const { laptop: gtLaptop } = greaterThan;
   const [isGreaterThanLaptop, setIsGreaterThanLaptop] = useState(gtLaptop());
+  const search = useSelector((state) => state.header.search);
+  const dispatcher = useDispatch();
+
   const formik = {
     initialValues: {
-      search: '',
+      search,
     },
-    onSubmit: () => null,
+    onSubmit: (values) => dispatcher({ type: HeaderTypes.SET_SEARCH, search: values.search }),
   };
   const showingSidebar = useSelector((state) => state.sidebar.showing);
-  const dispatcher = useDispatch();
 
   useCallback(() => {
     const setShowing = (s) => {
-      dispatcher({ type: Types.SET_SHOWING, showing: s });
+      dispatcher({ type: SidebarTypes.SET_SHOWING, showing: s });
     };
     const validateSidebarWidth = () => {
       setIsGreaterThanLaptop(gtLaptop());
@@ -43,10 +46,12 @@ const Header = () => {
   return (
     <Wrapper>
       <ButtonContainer hideOnLaptop>
-        <Button onClick={() => dispatcher({ type: Types.SET_SHOWING, showing: !showingSidebar })}>
+        <Button
+          onClick={() => dispatcher({ type: SidebarTypes.SET_SHOWING, showing: !showingSidebar })}
+        >
           {
-        !showingSidebar ? <Menu /> : <Close />
-      }
+            !showingSidebar ? <Menu /> : <Close />
+          }
         </Button>
       </ButtonContainer>
       <Formik
