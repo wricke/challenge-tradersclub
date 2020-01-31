@@ -13,8 +13,10 @@ const Sidebar = (props) => {
   );
 };
 
-Sidebar.propTypes = {
+export const SidebarPropTypes = {
   show: PropTypes.bool.isRequired,
 };
+
+Sidebar.propTypes = SidebarPropTypes;
 
 export default Sidebar;

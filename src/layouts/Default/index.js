@@ -44,8 +44,10 @@ const Default = ({ Page, ...props }) => {
   );
 };
 
-Default.propTypes = {
+export const DefaultLayoutPropTypes = {
   Page: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
 };
+
+Default.propTypes = DefaultLayoutPropTypes;
 
 export default Default;

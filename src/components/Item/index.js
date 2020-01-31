@@ -27,7 +27,7 @@ const Item = (props) => {
   );
 };
 
-Item.propTypes = {
+export const ItemPropTypes = {
   car: PropTypes.shape({
     title: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
@@ -37,5 +37,7 @@ Item.propTypes = {
     properties: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
+
+Item.propTypes = ItemPropTypes;
 
 export default Item;

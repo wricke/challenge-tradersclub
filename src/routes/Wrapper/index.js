@@ -11,8 +11,10 @@ const Wrapper = ({ component, ...otherProps }) => (
   />
 );
 
-Wrapper.propTypes = {
+export const RouteWrapperPropTypes = {
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
 };
+
+Wrapper.propTypes = RouteWrapperPropTypes;
 
 export default Wrapper;
