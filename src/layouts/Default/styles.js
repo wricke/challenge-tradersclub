@@ -26,6 +26,7 @@ export const Container = styled.div`
 
 export const PageContainer = styled.main`
   width: 100%;
+  padding: 5vw;
   flex-grow: 1;
   background: linear-gradient(${colors.wrapper.concat('F2')}, ${colors.wrapper.concat('F2')}),
     url(${car}), #ffffff no-repeat center;
