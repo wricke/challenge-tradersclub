@@ -33,9 +33,12 @@ const Default = ({ Page, ...props }) => {
 
   return (
     <Wrapper>
-      <Sidebar show={showSidebar} />
+      <Sidebar
+        {...props}
+        show={showSidebar}
+      />
       <Container>
-        <Header />
+        <Header {...props} />
         <PageContainer>
           <Page {...props} />
         </PageContainer>
