@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper } from './styles';
 
-const Home = () => (
+const HomePage = () => (
   <Wrapper>
     <h1>
       Pesquisa de veículos do
@@ -10,4 +10,4 @@ const Home = () => (
   </Wrapper>
 );
 
-export default Home;
+export default HomePage;
