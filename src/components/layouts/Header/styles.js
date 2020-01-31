@@ -55,7 +55,7 @@ export const InputContainer = styled.form`
   width: 50%;
   position: relative;
   @media ${maxWidth.mobileXL} {
-    display: ${(props) => (props.hide ? 'none' : '')};
+    display: ${(props) => (props.hideOnMobile ? 'none' : '')};
   }
   @media ${minWidth.tablet} {
     width: 70%;
