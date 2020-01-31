@@ -16,7 +16,7 @@ import { greaterThan } from '../../../helpers/sizes';
 import { Types as SidebarTypes } from '../../../store/ducks/sidebar';
 import { Types as HeaderTypes } from '../../../store/ducks/header';
 
-const Header = () => {
+const Header = ({ history }) => {
   const { laptop: gtLaptop } = greaterThan;
   const [isGreaterThanLaptop, setIsGreaterThanLaptop] = useState(gtLaptop());
   const search = useSelector((state) => state.header.search);
@@ -26,7 +26,11 @@ const Header = () => {
     initialValues: {
       search,
     },
-    onSubmit: (values) => dispatcher({ type: HeaderTypes.SET_SEARCH, search: values.search }),
+    onSubmit: (values) => {
+      dispatcher({ type: HeaderTypes.SET_SEARCH, search: values.search });
+
+      history.push('/list');
+    },
   };
   const showingSidebar = useSelector((state) => state.sidebar.showing);
 
