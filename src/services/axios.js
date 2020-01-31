@@ -4,6 +4,11 @@ export const axios = ax.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api`,
 });
 
+axios.interceptors.response.use(
+  (data) => data.data,
+  (error) => Promise.reject(error.response.data),
+);
+
 export const getCars = (params) => axios.get('/cars', { params });
 
 export const createCar = (data) => axios.post('/cars', data);
