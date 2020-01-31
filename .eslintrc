@@ -12,6 +12,7 @@
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
     "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/prop-types": ["off", { "allow": ["history"] }],
   }
 }
