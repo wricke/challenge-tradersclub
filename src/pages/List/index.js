@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { getCars } from '../../services/axios';
 import { fromApi, allCarsToOurCars } from '../../helpers/mappers';
-import List from '../../components/List';
+import List from '../../components/Car/List';
 
 const ListPage = () => {
   const [cars, setCars] = useState([]);

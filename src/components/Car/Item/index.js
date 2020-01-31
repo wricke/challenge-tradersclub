@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Wrapper, OrdenedList } from './styles';
-import { toCurrency } from '../../helpers/mappers';
+import { toCurrency } from '../../../helpers/mappers';
 
 const Item = (props) => {
   const { car } = props;

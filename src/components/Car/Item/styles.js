@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { minWidth } from '../../styles/devices';
+import { minWidth } from '../../../styles/devices';
 
 const PADDING_SIZE = '30px';
 export const ITEM_WIDTH = css`
