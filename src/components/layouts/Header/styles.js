@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import colors from '../../../styles/colors';
 import { minWidth, maxWidth } from '../../../styles/devices';
@@ -6,6 +6,17 @@ import { minWidth, maxWidth } from '../../../styles/devices';
 export const CONTAINER_HEIGHT = '94px';
 export const DEFAULT_SIDEBAR_ELEMENTS_SIZE = '45px';
 
+const CSSs = {
+  container: css`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @media ${maxWidth.mobileXL} {
+      display: ${(props) => (props.hideOnMobile ? 'none' : '')};
+    }
+  `,
+};
 
 export const Wrapper = styled.header`
   width: 100%;
@@ -27,13 +38,8 @@ export const Button = styled.button`
 `;
 
 export const ButtonContainer = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
+  ${CSSs.container}
 
-  @media ${maxWidth.mobileXL} {
-    display: ${(props) => (props.hideOnMobile && 'none')};
-  }
   @media ${minWidth.laptop} {
     display: ${(props) => props.hideOnLaptop && 'none'};
   }
@@ -49,14 +55,9 @@ export const Input = styled.input`
 `;
 
 export const InputContainer = styled.form`
-  height: 100%;
-  display: flex;
-  align-items: center;
   width: 50%;
-  position: relative;
-  @media ${maxWidth.mobileXL} {
-    display: ${(props) => (props.hideOnMobile ? 'none' : '')};
-  }
+  ${CSSs.container}
+
   @media ${minWidth.tablet} {
     width: 70%;
   }
