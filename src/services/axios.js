@@ -9,7 +9,7 @@ axios.interceptors.response.use(
   (error) => Promise.reject(error.response.data),
 );
 
-export const getCars = (params) => axios.get('/cars', { params });
+export const getCars = (search) => axios.get('/cars', { params: { search } });
 
 export const createCar = (data) => axios.post('/cars', data);
 
