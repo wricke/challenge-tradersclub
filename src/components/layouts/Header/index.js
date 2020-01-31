@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <ButtonContainer hideOnLaptop={isGreaterThanLaptop}>
+      <ButtonContainer hideOnLaptop>
         <Button onClick={() => dispatcher({ type: Types.SET_SHOWING, showing: !showingSidebar })}>
           {
         !showingSidebar ? <Menu /> : <Close />
