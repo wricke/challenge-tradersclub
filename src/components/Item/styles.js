@@ -26,6 +26,9 @@ export const Wrapper = styled.li`
 
   > div {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &:last-child {
       text-align: right;
