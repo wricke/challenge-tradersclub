@@ -9,7 +9,7 @@ import CarSchema from '../../../schemas/car';
 import colors from '../../../styles/colors';
 
 const Form = ({
-  initialValues, handleSubmit, handleReset, brands, id,
+  initialValues, handleSubmit, handleReset, brands, id, handleDelete,
 }) => {
   const formik = {
     initialValues,
@@ -24,7 +24,7 @@ const Form = ({
     <Wrapper>
       <Formik {...formik}>
         {({
-          handleBlur, handleChange, values, errors, touched, resetForm, submitForm,
+          handleBlur, handleChange, values, errors, touched, resetForm, isSubmitting, submitForm,
         }) => {
           // eslint-disable-next-line
           const itemsTouched = useMemo(() => Object.keys(touched), [touched]);
@@ -41,7 +41,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.title}
-                  error={errors.title}
+                  error={includeField('title') ? errors.title : null}
                   touched={includeField('title')}
                 />
               </div>
@@ -55,7 +55,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.model}
-                  error={errors.model}
+                  error={includeField('model') ? errors.model : null}
                   touched={includeField('model')}
                 />
                 <Field
@@ -67,7 +67,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.year || ''}
-                  error={errors.year}
+                  error={includeField('year') ? errors.year : null}
                   touched={includeField('year')}
                 />
               </div>
@@ -81,7 +81,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.brand || ''}
-                  error={errors.brand}
+                  error={includeField('brand') ? errors.brand : null}
                   touched={includeField('brand')}
                   displayEmpty
                   style={values.brand === 0 ? { color: colors.input } : { color: 'white' }}
@@ -114,7 +114,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.color}
-                  error={errors.color}
+                  error={includeField('color') ? errors.color : null}
                   touched={includeField('color')}
                 />
                 <Field
@@ -126,7 +126,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.price || ''}
-                  error={errors.price}
+                  error={includeField('price') ? errors.price : null}
                   touched={includeField('price')}
                 />
               </div>
@@ -140,7 +140,7 @@ const Form = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.km || ''}
-                  error={errors.km}
+                  error={includeField('km') ? errors.km : null}
                   touched={includeField('km')}
                 />
               </div>
@@ -150,6 +150,7 @@ const Form = ({
                     <Button
                       width="80px"
                       outline
+                      onClick={handleDelete}
                     >
                       Remover
                     </Button>
@@ -169,7 +170,11 @@ const Form = ({
                     color={colors.background}
                     width="80px"
                     type="submit"
-                    onClick={submitForm}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      submitForm();
+                    }}
+                    disable={isSubmitting}
                   >
                     Salvar
                   </Button>
@@ -183,18 +188,24 @@ const Form = ({
   );
 };
 
+const allowNull = (wrappedPropTypes) => (props, propName, ...rest) => {
+  if (props[propName] === null) return null;
+  return wrappedPropTypes(props, propName, ...rest);
+};
+
 export const FormPropTypes = {
   handleReset: PropTypes.func,
   initialValues: PropTypes.shape({
     title: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
-    brand: PropTypes.number.isRequired,
-    year: PropTypes.number.isRequired,
+    brand: allowNull(PropTypes.number.isRequired),
+    year: allowNull(PropTypes.number.isRequired),
     color: PropTypes.string.isRequired,
-    km: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
+    km: allowNull(PropTypes.number.isRequired),
+    price: allowNull(PropTypes.number.isRequired),
   }),
   id: PropTypes.number,
+  handleDelete: PropTypes.func,
 };
 
 export const FormDefaultProps = {
@@ -202,13 +213,14 @@ export const FormDefaultProps = {
     title: '',
     model: '',
     brand: 0,
-    year: 0,
+    year: null,
     color: '',
-    km: 0,
-    price: 0,
+    km: null,
+    price: null,
   },
   id: 0,
   handleReset: () => null,
+  handleDelete: () => null,
 };
 
 Form.propTypes = FormPropTypes;
