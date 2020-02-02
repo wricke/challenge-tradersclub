@@ -5,12 +5,11 @@ import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Wrapper,
-  Button,
   ButtonContainer,
-  Input,
   InputContainer,
   ButtonInputContainer,
 } from './styles';
+import { Input, Button } from '../../Form';
 import colors from '../../../styles/colors';
 import { greaterThan } from '../../../helpers/sizes';
 import { Types as SidebarTypes } from '../../../store/ducks/sidebar';
@@ -82,7 +81,13 @@ const Header = ({ history }) => {
         )}
       </Formik>
       <ButtonContainer hideOnMobile={showingSidebar}>
-        <Button bold bgColor="white" width="auto" color={colors.header}>
+        <Button
+          bold
+          bgColor="white"
+          width="auto"
+          color={colors.header}
+          onClick={() => history.push('/car')}
+        >
           Cadastrar
         </Button>
       </ButtonContainer>
