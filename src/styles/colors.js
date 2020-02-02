@@ -4,4 +4,5 @@ export default {
   header: '#1a2533',
   input: '#7e838c',
   span: '#2c4666',
+  background: '#2e324d',
 };
