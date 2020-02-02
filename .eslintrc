@@ -14,5 +14,7 @@
     "no-underscore-dangle": "off",
     "import/prefer-default-export": "off",
     "react/prop-types": ["off", { "allow": ["history"] }],
+    "react/jsx-fragments": "off",
+    "no-console": ["error", { "allow": ["error"] }]
   }
 }
