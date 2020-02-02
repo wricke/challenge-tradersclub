@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 
 import colors from '../../../styles/colors';
 import { minWidth, maxWidth } from '../../../styles/devices';
+import { Button } from '../../Form';
+import { CONTAINER_HEADER_HEIGHT } from '../../../styles/elements-sizes';
 
-export const CONTAINER_HEIGHT = '94px';
-export const DEFAULT_SIDEBAR_ELEMENTS_SIZE = '45px';
 
 const CSSs = {
   container: css`
@@ -23,18 +23,8 @@ export const Wrapper = styled.header`
   display: flex;
   justify-content: space-around;
   background: ${colors.header};
-  height: ${CONTAINER_HEIGHT};
+  height: ${CONTAINER_HEADER_HEIGHT};
   top: 0;
-`;
-
-export const Button = styled.button`
-  width: ${(props) => props.width || DEFAULT_SIDEBAR_ELEMENTS_SIZE};
-  height: ${(props) => props.height || DEFAULT_SIDEBAR_ELEMENTS_SIZE};
-  background: ${(props) => props.bgColor || 'transparent'};
-  font-weight: ${(props) => (props.bold ? '700' : '')};
-  color: ${(props) => props.color};
-  padding: 10px;
-  border-radius: 3px;
 `;
 
 export const ButtonContainer = styled.div`
@@ -42,24 +32,6 @@ export const ButtonContainer = styled.div`
 
   @media ${minWidth.laptop} {
     display: ${(props) => props.hideOnLaptop && 'none'};
-  }
-`;
-
-export const Input = styled.input`
-  height: ${DEFAULT_SIDEBAR_ELEMENTS_SIZE};
-  border-radius: 5px;
-  padding: 0 5px;
-  width: 100%;
-  background-color: transparent;
-  border: ${colors.input} solid 2px;
-  ::placeholder {
-    color: ${colors.input}; 
-  }
-  :-ms-input-placeholder {
-    color: ${colors.input}; 
-  }
-  ::-ms-input-placeholder {
-    color: ${colors.input}; 
   }
 `;
 
