@@ -150,7 +150,10 @@ const Form = ({
                     <Button
                       width="80px"
                       outline
-                      onClick={handleDelete}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleDelete();
+                      }}
                     >
                       Remover
                     </Button>
