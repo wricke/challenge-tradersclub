@@ -1,19 +1,23 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import Item, { ItemPropTypes } from '../Item';
+import { ItemPropTypes } from '../Item';
+import ItemList from '../ItemList';
 
 import { Separator, Wrapper } from './style';
 
 const List = (props) => {
-  const { cars } = props;
+  const { cars, clickableItems } = props;
 
   return (
     <Wrapper>
       {
         cars.map((car) => (
           <Fragment key={car.id}>
-            <Item car={car} />
+            <ItemList
+              car={car}
+              clickable={clickableItems}
+            />
             <Separator />
           </Fragment>
         ))

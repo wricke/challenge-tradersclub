@@ -16,7 +16,12 @@ const ListPage = () => {
       .then(setCars);
   }, [search]);
 
-  return <List cars={cars} />;
+  return (
+    <List
+      cars={cars}
+      clickableItems
+    />
+  );
 };
 
 export default ListPage;

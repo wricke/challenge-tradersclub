@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, OrdenedList } from './styles';
+import { OrdenedList } from './styles';
 import { toCurrency } from '../../../helpers/mappers';
 
 const Item = (props) => {
   const { car } = props;
 
   return (
-    <Wrapper>
+    <Fragment>
       <div>
         <p>{car.title}</p>
         <OrdenedList>
@@ -23,7 +23,7 @@ const Item = (props) => {
         <p>{toCurrency(car.price)}</p>
         <p>{car.year}</p>
       </div>
-    </Wrapper>
+    </Fragment>
   );
 };
 
