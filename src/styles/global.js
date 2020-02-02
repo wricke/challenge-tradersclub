@@ -7,12 +7,10 @@ export default createGlobalStyle`
     outline: 0; 
     border: 0;
     box-sizing: border-box;
+    color: white;
   }
   *:focus {
     outline: 0;
-  }
-  * {
-    color: white;
   }
   html, body, #root {
     height: 100%;
@@ -31,5 +29,8 @@ export default createGlobalStyle`
   }
   button {
     cursor: pointer;
+  }
+  .MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button {
+    color: black;
   }
 `;
